@@ -1,17 +1,274 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Harbor Bean Coffee | Portfolio Demo</title>
-<style>
-:root{--coffee:#402b22;--cream:#f7f1e8;--sand:#dec7aa;--green:#62715c}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:var(--coffee);background:var(--cream)}header{display:flex;justify-content:space-between;align-items:center;padding:22px max(24px,6vw);border-bottom:1px solid #ddcfbe}nav a{margin-left:18px;text-decoration:none;color:inherit;font-weight:650}.hero{min-height:68vh;display:grid;place-items:center;padding:60px 24px;background:linear-gradient(135deg,#f7f1e8 0,#eadbc7 100%)}.wrap{width:min(1000px,100%)}h1{font-size:clamp(3rem,8vw,6rem);line-height:.95;letter-spacing:-.055em;margin:0 0 22px}.hero p{font-size:1.12rem;max-width:620px;line-height:1.7}.cta{display:inline-block;margin-top:18px;background:var(--coffee);color:white;padding:13px 19px;border-radius:999px;text-decoration:none;font-weight:800}.grid{width:min(1000px,calc(100% - 48px));margin:0 auto;padding:72px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:white;border:1px solid #e0d4c5;border-radius:18px;padding:24px}.card span{font-size:.75rem;letter-spacing:.12em;color:var(--green);font-weight:850}.contact{padding:70px 24px;background:var(--coffee);color:white;text-align:center}.contact form{width:min(560px,100%);margin:24px auto 0;display:grid;gap:10px}.contact input,.contact textarea{width:100%;padding:14px;border:0;border-radius:10px;font:inherit}.contact button{padding:14px;border:0;border-radius:10px;font-weight:850;cursor:pointer}small{opacity:.8}@media(max-width:700px){nav{display:none}.grid{grid-template-columns:1fr}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Harbor Bean Coffee — premium fictional cafe website portfolio demo.">
+  <title>Harbor Bean Coffee | Premium Portfolio Demo</title>
+  <style>
+    :root{
+      --ink:#1f1713;
+      --espresso:#2b1c17;
+      --roast:#6f432f;
+      --caramel:#c68a55;
+      --cream:#f7f0e7;
+      --paper:#fffdf9;
+      --sage:#73806d;
+      --line:rgba(43,28,23,.12);
+      --shadow:0 30px 80px rgba(48,29,18,.13);
+      --radius:28px
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:var(--paper);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.65
+    }
+    a{color:inherit}
+    .shell{width:min(1180px,calc(100% - 40px));margin:auto}
+    .site-header{
+      position:fixed;inset:0 0 auto;z-index:50;
+      background:rgba(255,253,249,.82);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(43,28,23,.08)
+    }
+    .nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{text-decoration:none;display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:-.03em}
+    .bean-mark{width:38px;height:38px;border-radius:50%;background:var(--espresso);position:relative;box-shadow:inset -8px -8px 16px rgba(255,255,255,.05)}
+    .bean-mark:after{content:"";position:absolute;width:16px;height:28px;border-left:2px solid #efc79d;border-radius:50%;left:18px;top:5px;transform:rotate(20deg)}
+    .nav-links{display:flex;align-items:center;gap:28px}
+    .nav-links a{text-decoration:none;font-weight:750;font-size:.94rem}
+    .nav-links a:hover{color:var(--roast)}
+    .nav-cta{padding:10px 16px;border-radius:999px;background:var(--espresso);color:white!important}
+    .menu-btn{display:none;border:1px solid var(--line);background:white;border-radius:12px;padding:10px 13px;font-weight:800}
+    .hero{
+      min-height:100vh;
+      padding:132px 0 70px;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 82% 18%,rgba(198,138,85,.22),transparent 26%),
+        linear-gradient(135deg,#fbf6f0 0%,#f1e4d6 58%,#ead7c6 100%)
+    }
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:68px;align-items:center}
+    .kicker{font-size:.76rem;letter-spacing:.18em;font-weight:900;color:var(--roast);margin:0 0 16px}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(4rem,8vw,7.3rem);line-height:.9;letter-spacing:-.055em;margin-bottom:26px;font-weight:700}
+    h1 em{font-weight:400;color:var(--roast)}
+    .lead{font-size:1.12rem;color:#6c5c53;max-width:640px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 22px;border-radius:999px;text-decoration:none;font-weight:850;border:1px solid transparent;transition:.2s ease}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-dark{background:var(--espresso);color:white;box-shadow:0 14px 32px rgba(43,28,23,.20)}
+    .btn-light{background:rgba(255,255,255,.72);border-color:rgba(43,28,23,.12)}
+    .hero-note{display:flex;gap:22px;flex-wrap:wrap;margin-top:34px;font-size:.88rem;color:#75645b}
+    .hero-note span:before{content:"•";color:var(--caramel);margin-right:8px}
+    .visual{position:relative;min-height:570px}
+    .visual-card{
+      position:absolute;inset:28px 0 0 44px;border-radius:38px;
+      background:linear-gradient(160deg,#4e2d20 0%,#241713 68%);
+      box-shadow:0 42px 90px rgba(43,28,23,.28);overflow:hidden
+    }
+    .visual-card:before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(198,138,85,.38),transparent 65%);right:-90px;top:-100px}
+    .table{position:absolute;left:-10%;right:-10%;bottom:-8%;height:38%;background:linear-gradient(#8f5839,#4b2c20);transform:rotate(-2deg)}
+    .cup{position:absolute;width:210px;height:148px;left:50%;top:49%;transform:translate(-50%,-50%);border-radius:16px 16px 78px 78px;background:linear-gradient(145deg,#fff9f0,#e8d7c5);box-shadow:0 26px 50px rgba(0,0,0,.3)}
+    .cup:before{content:"";position:absolute;width:142px;height:30px;border-radius:50%;background:#2b1710;left:34px;top:13px;box-shadow:inset 0 0 0 8px #efe0d0}
+    .cup:after{content:"";position:absolute;width:70px;height:76px;border:18px solid #ead8c6;border-left:0;border-radius:0 50% 50% 0;right:-61px;top:35px}
+    .steam,.steam:before,.steam:after{position:absolute;width:24px;height:120px;border-radius:50%;border-left:3px solid rgba(255,255,255,.62)}
+    .steam{left:48%;top:82px;transform:rotate(10deg)}
+    .steam:before{content:"";left:-55px;top:13px;transform:rotate(-14deg)}
+    .steam:after{content:"";left:45px;top:20px;transform:rotate(14deg)}
+    .bean{position:absolute;width:34px;height:50px;background:#7f4a30;border-radius:50%;transform:rotate(25deg);box-shadow:inset -8px -7px 12px rgba(0,0,0,.18)}
+    .bean:after{content:"";position:absolute;left:16px;top:4px;width:2px;height:42px;background:#dba477;border-radius:50%}
+    .bean.one{left:18%;bottom:18%}.bean.two{right:15%;bottom:22%;transform:rotate(-40deg)}.bean.three{right:27%;top:24%;transform:rotate(65deg)}
+    .floating-card{
+      position:absolute;right:-10px;bottom:18px;width:230px;padding:20px;border-radius:20px;
+      background:rgba(255,253,249,.9);backdrop-filter:blur(16px);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.7)
+    }
+    .floating-card strong{display:block;font-family:Georgia,serif;font-size:1.25rem;margin-bottom:5px}
+    .floating-card span{color:#7d6f66;font-size:.84rem}
+    .section{padding:104px 0}
+    .section.alt{background:#f7f2ec}
+    .heading{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:42px}
+    .heading>div{max-width:720px}
+    h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.5rem,5vw,4.5rem);line-height:1;letter-spacing:-.04em;margin-bottom:14px}
+    .heading p,.muted{color:#74645b}
+    .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .drink{
+      border-radius:var(--radius);overflow:hidden;background:white;border:1px solid var(--line);box-shadow:0 16px 44px rgba(48,29,18,.07);transition:.25s ease
+    }
+    .drink:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(48,29,18,.12)}
+    .drink-art{height:260px;display:grid;place-items:center;position:relative;overflow:hidden}
+    .drink:nth-child(1) .drink-art{background:linear-gradient(140deg,#d6b89a,#8a5439)}
+    .drink:nth-child(2) .drink-art{background:linear-gradient(140deg,#d7c7ad,#6e7968)}
+    .drink:nth-child(3) .drink-art{background:linear-gradient(140deg,#c9d8de,#55717f)}
+    .glass{width:118px;height:160px;border-radius:18px 18px 30px 30px;background:linear-gradient(180deg,rgba(255,255,255,.86),rgba(255,255,255,.45));border:2px solid rgba(255,255,255,.65);position:relative;box-shadow:0 24px 40px rgba(0,0,0,.16)}
+    .glass:before{content:"";position:absolute;left:9px;right:9px;bottom:9px;height:68%;border-radius:12px 12px 22px 22px;background:linear-gradient(#d8a877 0 38%,#6c3a25 39% 100%)}
+    .drink:nth-child(2) .glass:before{background:linear-gradient(#f1e7d0 0 30%,#70503d 31% 100%)}
+    .drink:nth-child(3) .glass:before{background:linear-gradient(#efe7de 0 25%,#553d34 26% 72%,#32221d 73%)}
+    .ice{position:absolute;inset:24px 18px auto;height:50px;background:linear-gradient(135deg,rgba(255,255,255,.58),rgba(255,255,255,.12));clip-path:polygon(0 10%,35% 0,52% 25%,80% 8%,100% 42%,78% 70%,44% 55%,20% 100%,2% 72%)}
+    .drink-copy{padding:24px}
+    .drink-copy small{font-size:.72rem;letter-spacing:.14em;color:var(--sage);font-weight:900}
+    .drink-copy h3{font-family:Georgia,serif;font-size:1.55rem;margin:8px 0 8px}
+    .price{font-weight:900;color:var(--roast)}
+    .story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+    .story-art{min-height:520px;border-radius:34px;background:linear-gradient(155deg,#ece0d2,#c89d78);position:relative;overflow:hidden;box-shadow:var(--shadow)}
+    .story-art:before{content:"";position:absolute;width:290px;height:290px;border-radius:50%;background:#2d1b15;left:50%;top:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 26px rgba(255,255,255,.38)}
+    .story-art:after{content:"HARBOR\A BEAN";white-space:pre;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:white;font-family:Georgia,serif;text-align:center;font-size:2.2rem;line-height:.92;letter-spacing:.08em}
+    .story-copy p{color:#74645b;font-size:1.05rem}
+    .features{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:28px}
+    .feature{padding:17px;border-radius:18px;background:white;border:1px solid var(--line);font-weight:750}
+    .feature span{display:block;color:var(--roast);font-size:.76rem;letter-spacing:.1em;margin-bottom:4px}
+    .testimonial{padding:70px;border-radius:34px;background:var(--espresso);color:white;position:relative;overflow:hidden}
+    .testimonial:after{content:"“";position:absolute;right:35px;top:-35px;font-family:Georgia,serif;font-size:15rem;color:rgba(255,255,255,.05)}
+    .quote{font-family:Georgia,serif;font-size:clamp(2rem,4vw,3.4rem);line-height:1.14;max-width:900px;margin-bottom:30px}
+    .quote-by{color:#dcb58f}
+    .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .visit-card{padding:34px;border-radius:26px;border:1px solid var(--line);background:white}
+    .hours{display:grid;gap:10px;margin-top:20px}
+    .hours div{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:8px}
+    .contact{
+      background:linear-gradient(145deg,#2c1b16,#4d2d21);color:white;padding:92px 0
+    }
+    .contact-grid{display:grid;grid-template-columns:1fr .9fr;gap:56px;align-items:start}
+    .contact p{color:#d7c1b4}
+    form{display:grid;gap:12px}
+    input,textarea{width:100%;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);color:white;border-radius:14px;padding:15px 16px;font:inherit;outline:none}
+    input:focus,textarea:focus{border-color:#e2b78f;background:rgba(255,255,255,.11)}
+    input::placeholder,textarea::placeholder{color:#cfb9ad}
+    button.submit{border:0;cursor:pointer;background:#f4e5d5;color:#2d1b15;border-radius:14px;padding:15px 18px;font-weight:900}
+    #status{min-height:20px;color:#e7c6a8;font-size:.88rem}
+    footer{padding:32px 0;background:#1d1411;color:#cbb7ab}
+    .footer{display:flex;justify-content:space-between;gap:24px;align-items:center}
+    .demo-note{font-size:.78rem;opacity:.82}
+    .reveal{opacity:0;transform:translateY(18px);transition:.6s ease}
+    .reveal.visible{opacity:1;transform:none}
+    @media(max-width:900px){
+      .hero-grid,.story-grid,.contact-grid,.visit-grid{grid-template-columns:1fr}
+      .menu-grid{grid-template-columns:1fr}
+      .visual{min-height:480px}.visual-card{inset:18px 22px 0 22px}
+      .nav-links{display:none;position:absolute;top:70px;left:20px;right:20px;flex-direction:column;align-items:stretch;padding:18px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+      .nav-links.open{display:flex}.menu-btn{display:inline-flex}
+      .heading{align-items:flex-start;flex-direction:column}
+    }
+    @media(max-width:560px){
+      .shell{width:min(100% - 26px,1180px)}
+      .hero{padding-top:110px}.visual{min-height:390px}.cup{transform:translate(-50%,-50%) scale(.8)}
+      .floating-card{right:10px;width:200px}.features{grid-template-columns:1fr}
+      .testimonial{padding:38px 26px}.footer{flex-direction:column;align-items:flex-start}
+    }
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  </style>
 </head>
 <body>
-<header><strong>Harbor Bean</strong><nav><a href="#menu">Menu</a><a href="#story">Story</a><a href="#contact">Contact</a></nav></header>
-<section class="hero"><div class="wrap"><p><strong>PORTFOLIO DEMO · FICTIONAL BUSINESS</strong></p><h1>Good coffee.<br>Quiet harbor.</h1><p>A responsive small-business landing page created as a front-end portfolio demonstration. The layout adapts to mobile screens and includes a lightweight contact form interaction.</p><a class="cta" href="#menu">Explore the demo</a></div></section>
-<section id="menu" class="grid"><article class="card"><span>ESPRESSO</span><h2>Dockside Latte</h2><p>Velvety milk, double espresso, and a hint of brown sugar.</p></article><article class="card"><span>FILTER</span><h2>Harbor Pour-Over</h2><p>Single-origin coffee brewed clean and bright to order.</p></article><article class="card"><span>COLD</span><h2>Sea Salt Cold Brew</h2><p>Slow-steeped coffee with a lightly salted cream cap.</p></article></section>
-<section id="story" class="hero"><div class="wrap"><p><strong>THE CONCEPT</strong></p><h2>Designed for a neighborhood cafe that needs a clean web presence.</h2><p>This sample demonstrates semantic HTML, responsive CSS, readable visual hierarchy, mobile-friendly layout, and basic client-side form handling.</p></div></section>
-<section id="contact" class="contact"><h2>Say hello</h2><p>This form is a demo and does not send data anywhere.</p><form id="demo-form"><input required placeholder="Your name"><input required type="email" placeholder="Email"><textarea rows="4" placeholder="Message"></textarea><button type="submit">Send demo message</button><small id="status"></small></form></section>
-<script>document.querySelector('#demo-form').addEventListener('submit',e=>{e.preventDefault();document.querySelector('#status').textContent='Demo complete: form validation passed. No data was sent.'})</script>
-</body></html>
+  <header class="site-header">
+    <div class="shell nav">
+      <a class="brand" href="#home"><span class="bean-mark"></span><span>Harbor Bean Coffee</span></a>
+      <button class="menu-btn" aria-expanded="false">Menu</button>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#menu">Menu</a><a href="#story">Our story</a><a href="#visit">Visit</a><a class="nav-cta" href="#contact">Reserve a table</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="shell hero-grid">
+        <div class="reveal">
+          <p class="kicker">SMALL BATCH · COASTAL ROASTERY</p>
+          <h1>Coffee with a <em>quieter tide.</em></h1>
+          <p class="lead">A premium neighborhood café concept built around slow mornings, thoughtful roasting, and a warm place to stay awhile.</p>
+          <div class="hero-actions">
+            <a class="btn btn-dark" href="#menu">Explore the menu</a>
+            <a class="btn btn-light" href="#story">Discover our story</a>
+          </div>
+          <div class="hero-note"><span>Roasted weekly</span><span>Locally baked pastries</span><span>Open daily</span></div>
+        </div>
+        <div class="visual reveal" aria-hidden="true">
+          <div class="visual-card"><div class="steam"></div><div class="cup"></div><div class="table"></div><div class="bean one"></div><div class="bean two"></div><div class="bean three"></div></div>
+          <div class="floating-card"><strong>House roast · 04</strong><span>Chocolate · toasted almond · brown sugar</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu" class="section">
+      <div class="shell">
+        <div class="heading reveal">
+          <div><p class="kicker">SIGNATURE DRINKS</p><h2>Made slowly. Served beautifully.</h2></div>
+          <p>Three house favorites designed for a polished fictional café brand.</p>
+        </div>
+        <div class="menu-grid">
+          <article class="drink reveal"><div class="drink-art"><div class="glass"><div class="ice"></div></div></div><div class="drink-copy"><small>ESPRESSO</small><h3>Dockside Latte</h3><p class="muted">Double espresso, velvet milk, brown sugar and sea-salt caramel.</p><span class="price">₱185</span></div></article>
+          <article class="drink reveal"><div class="drink-art"><div class="glass"><div class="ice"></div></div></div><div class="drink-copy"><small>FILTER</small><h3>Harbor Pour-Over</h3><p class="muted">Single-origin beans brewed clean, floral and bright to order.</p><span class="price">₱165</span></div></article>
+          <article class="drink reveal"><div class="drink-art"><div class="glass"><div class="ice"></div></div></div><div class="drink-copy"><small>COLD</small><h3>Sea Salt Cold Brew</h3><p class="muted">18-hour cold brew finished with a lightly salted cream cap.</p><span class="price">₱195</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="story" class="section alt">
+      <div class="shell story-grid">
+        <div class="story-art reveal" aria-hidden="true"></div>
+        <div class="story-copy reveal">
+          <p class="kicker">OUR STORY</p><h2>A neighborhood café, imagined with intention.</h2>
+          <p>Harbor Bean is a fictional business created as a front-end portfolio demonstration. The goal is to show how a small local brand can feel premium without becoming complicated or heavy.</p>
+          <p>The experience focuses on clear hierarchy, mobile responsiveness, strong calls to action, readable content, subtle interaction, and a visual identity that feels consistent from the first screen to the contact form.</p>
+          <div class="features">
+            <div class="feature"><span>01 · RESPONSIVE</span>Designed to adapt cleanly from desktop to phone.</div>
+            <div class="feature"><span>02 · ACCESSIBLE</span>Readable contrast, semantic sections and motion preferences.</div>
+            <div class="feature"><span>03 · INTERACTIVE</span>Mobile navigation, scroll reveals and working form feedback.</div>
+            <div class="feature"><span>04 · LIGHTWEIGHT</span>No framework or heavy library required.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="testimonial reveal">
+          <p class="kicker">THE HARBOR FEELING</p>
+          <p class="quote">“A warm cup, soft light, and enough quiet to remember what mornings are supposed to feel like.”</p>
+          <span class="quote-by">Mara Reyes · fictional regular</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit" class="section alt">
+      <div class="shell">
+        <div class="heading reveal"><div><p class="kicker">COME BY</p><h2>Your table by the window is waiting.</h2></div><p>Fictional location details for portfolio demonstration only.</p></div>
+        <div class="visit-grid">
+          <div class="visit-card reveal"><p class="kicker">LOCATION</p><h3>Harbor Bean · Seaside District</h3><p class="muted">18 Marina Walk, Portview<br>Quezon Coast, Philippines</p><p class="muted">Free Wi-Fi · outlets · outdoor seating</p></div>
+          <div class="visit-card reveal"><p class="kicker">OPENING HOURS</p><div class="hours"><div><span>Monday–Friday</span><strong>7:00–20:00</strong></div><div><span>Saturday</span><strong>7:00–21:00</strong></div><div><span>Sunday</span><strong>8:00–19:00</strong></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="shell contact-grid">
+        <div class="reveal"><p class="kicker">RESERVATIONS & HELLO</p><h2>Save a quiet corner.</h2><p>This is a portfolio demo. The form validates locally and does not transmit personal data.</p></div>
+        <form id="demo-form" class="reveal">
+          <input aria-label="Name" required placeholder="Your name">
+          <input aria-label="Email" required type="email" placeholder="Email address">
+          <textarea aria-label="Message" rows="5" placeholder="Table for two, Saturday morning..."></textarea>
+          <button class="submit" type="submit">Send demo request</button>
+          <div id="status" role="status"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="shell footer"><strong>Harbor Bean Coffee</strong><span class="demo-note">Premium fictional business website · portfolio demonstration</span></div></footer>
+
+  <script>
+    const btn=document.querySelector('.menu-btn'),nav=document.querySelector('.nav-links');
+    btn.addEventListener('click',()=>{const open=nav.classList.toggle('open');btn.setAttribute('aria-expanded',open)});
+    nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+    document.querySelector('#demo-form').addEventListener('submit',e=>{e.preventDefault();document.querySelector('#status').textContent='Demo complete — validation passed. No data was sent.'});
+    const items=document.querySelectorAll('.reveal');
+    if('IntersectionObserver'in window){const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');o.unobserve(e.target)}}),{threshold:.12});items.forEach(i=>o.observe(i))}else{items.forEach(i=>i.classList.add('visible'))}
+  </script>
+</body>
+</html>

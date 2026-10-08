@@ -1,0 +1,21 @@
+/* Warm editorial motion, no futuristic KJ accents. Progressive enhancement. */
+.reveal{opacity:1;transform:none}
+.motion-ready .reveal:not(.visible){opacity:0;transform:translate3d(0,28px,0)}
+.motion-ready .reveal.visible{opacity:1;transform:translate3d(0,0,0)}
+.motion-ready .reveal{transition:transform .83s cubic-bezier(.2,.74,.2,1),opacity .83s ease}
+.motion-ready .hero-content.reveal.visible{transition-duration:.7s}
+.motion-ready .hero-content.visible h1{animation:cafe-title .9s cubic-bezier(.16,.8,.24,1) both}
+.motion-ready .hero-content.visible .overline{animation:cafe-title .65s .07s both}
+.motion-ready .hero-content.visible p{animation:cafe-title .65s .2s both}
+.motion-ready .hero-content.visible .hero-actions{animation:cafe-title .65s .32s both}
+@keyframes cafe-title{from{opacity:0;transform:translate3d(0,24px,0)}to{opacity:1;transform:none}}
+.hero-photo{inset:-25px;animation:none;will-change:auto;transform:translate3d(0,var(--coffee-scroll,0px),0) scale(1.045)}
+.image-panel img,.menu-photo img,.story-photo img,.visit-image img{transition:transform .9s cubic-bezier(.2,.75,.2,1)}
+@media(hover:hover) and (pointer:fine){.image-panel:hover img,.menu-card:hover img,.story-photo:hover img,.visit-image:hover img{transform:scale(1.045)}}
+.menu-card.filter-enter{animation:cafe-menu-reveal .38s ease both}
+@keyframes cafe-menu-reveal{from{opacity:0;transform:translate3d(0,14px,0)}to{opacity:1;transform:none}}
+.head{transition:box-shadow .25s}
+.head.scrolled{box-shadow:0 12px 35px #26191021}
+:focus-visible{outline:2px solid #b58255;outline-offset:4px}
+@media(max-width:700px){.hero-photo{transform:scale(1.045)!important}.motion-ready .hero-content.visible h1{animation-duration:.6s}.image-panel img{transform:none}}
+@media(prefers-reduced-motion:reduce){.hero-photo{animation:none;transform:none!important}.motion-ready .reveal:not(.visible),.motion-ready .reveal{opacity:1!important;transform:none!important;transition:none!important}.motion-ready .hero-content.visible *{animation:none!important}.menu-card.filter-enter{animation:none!important}}

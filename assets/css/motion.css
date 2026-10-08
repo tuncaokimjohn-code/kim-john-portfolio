@@ -1,0 +1,114 @@
+/* KJ V3.2 motion system. Decorative motion only; content is visible without JavaScript. */
+.reveal{opacity:1;transform:none}
+.motion-ready .reveal:not(.visible){opacity:0;transform:translate3d(0,21px,0)}
+.motion-ready .reveal.visible{opacity:1;transform:translate3d(0,0,0)}
+.motion-ready .work-card.reveal:not(.visible){transform:translate3d(0,27px,0) scale(.99)}
+.motion-ready .work-card.reveal.visible{transform:translate3d(0,0,0) scale(1)}
+.motion-ready .work-card.reveal.visible:hover{transform:translate3d(0,-7px,0)}
+.motion-ready .reveal{transition:opacity .64s cubic-bezier(.2,.75,.2,1),transform .64s cubic-bezier(.2,.75,.2,1)}
+.motion-ready .skillcard:nth-child(3n + 2),.motion-ready .work-card:nth-child(2n){transition-delay:.07s}
+.motion-ready .skillcard:nth-child(3n),.motion-ready .work-card:nth-child(3n){transition-delay:.13s}
+html{scroll-padding-top:90px}
+:focus-visible{outline:2px solid #82e8f4;outline-offset:4px}
+/* Branded introduction appears only when early feature-test marks first non-reduced visit. */
+.brand-intro{display:none}
+.intro-eligible .brand-intro{position:fixed;inset:0;z-index:900;display:grid;place-items:center;background:radial-gradient(ellipse at center,#0e2c3a 0%,#07121e 50%,#050b13 100%);color:#ecfbff;animation:kj-outro 1.18s cubic-bezier(.2,.73,.2,1) both}
+.brand-intro__core{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;transform:translate3d(0,0,0)}
+.brand-intro__monogram{font-family:Manrope,system-ui,sans-serif;font-weight:800;font-size:clamp(5.5rem,15vw,10rem);letter-spacing:-.14em;line-height:1;color:#f4fdff;text-shadow:0 0 48px #29b5da3c;animation:kj-letter .45s both}
+.brand-intro__monogram span{color:#6ce0f4}
+.brand-intro__word{font-weight:800;font-size:clamp(.95rem,2vw,1.45rem);letter-spacing:.30em;animation:kj-letter .4s .22s both}
+.brand-intro__rule{height:2px;max-width:220px;width:53vw;background:linear-gradient(90deg,transparent,#88e9f2,transparent);transform-origin:center;animation:kj-rule .42s .34s both}
+.brand-intro__core p{color:#a9cfde;font-size:.68rem;letter-spacing:.32em;font-weight:700;animation:kj-letter .35s .46s both;margin:9px 0 0}
+.brand-intro__skip{position:absolute;bottom:24px;right:clamp(20px,4vw,54px);background:transparent;color:#c9e7ef;border:1px solid #90d8ea77;border-radius:99px;padding:10px 18px;font-size:.81rem;z-index:3}
+.brand-intro__skip:hover,.brand-intro__skip:focus-visible{background:#ffffff1b}
+@keyframes kj-letter{from{opacity:0;transform:translate3d(0,14px,0);filter:blur(4px)}to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}}
+@keyframes kj-rule{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
+@keyframes kj-outro{0%,72%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
+/* Immediately reveal hero once intro completes. These animations never gate interaction. */
+.motion-ready .hero .hero-signal{animation:kj-hero-in .65s .12s both}
+.motion-ready .hero .eyebrow{animation:kj-hero-in .65s .2s both}
+.motion-ready .hero .display{animation:kj-hero-in .7s .28s both}
+.motion-ready .hero .lede{animation:kj-hero-in .7s .38s both}
+.motion-ready .hero .actions{animation:kj-hero-in .7s .49s both}
+.motion-ready .hero .hero-visual.visible .ui-window{animation:kj-window-in .9s .4s both}
+.motion-ready .hero .hero-visual.visible .floating-chip.top{animation:kj-chip-in .55s .85s both}
+.motion-ready .hero .hero-visual.visible .floating-chip.bottom{animation:kj-chip-in .55s 1s both}
+@keyframes kj-hero-in{from{opacity:0;transform:translate3d(0,21px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes kj-window-in{from{opacity:0;transform:translate3d(0,28px,0) rotate(0deg) scale(.965)}to{opacity:1;transform:translate3d(0,0,0) rotate(2deg) scale(1)}}
+@keyframes kj-chip-in{from{opacity:0;transform:translate3d(0,15px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+/* Top reading progress, no interception of scrolling. */
+.scroll-progress{position:fixed;z-index:110;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,#3b9ed3,#92edf5);transform:scaleX(0);transform-origin:left;pointer-events:none;will-change:transform}
+.header{transition:background-color .25s,box-shadow .25s}
+.header.is-scrolled{background:rgba(6,15,26,.96);box-shadow:0 10px 35px #0209138c}
+/* Hover motion only when the device actually has a hover pointer. */
+@media(hover:hover) and (pointer:fine){
+ .glow-surface::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;background:radial-gradient(450px circle at var(--glow-x,50%) var(--glow-y,50%),rgba(111,227,245,.12),transparent 58%);transition:opacity .4s;z-index:2}
+ .glow-surface:hover::after{opacity:1}
+ .work-card .work-visual img.cover-fill{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+ .work-card:hover .work-visual img.cover-fill{transform:scale(1.035)}
+ .nav a:not(.navcontact)::after{content:'';display:block;height:2px;width:100%;background:#77dce9;transform:scaleX(0);transform-origin:left;transition:transform .28s}
+ .nav a:not(.navcontact):hover::after,.nav a:not(.navcontact):focus-visible::after{transform:scaleX(1)}
+ .btn.magnet{transform:translate3d(var(--mag-x,0px),var(--mag-y,0px),0);transition:transform .22s ease-out,box-shadow .25s,background .25s}
+ .btn.magnet:hover{box-shadow:0 13px 38px #57cfe03d}
+}
+.hero-visual{--glow-x:50%;--glow-y:50%}
+.ui-window{backface-visibility:hidden}
+/* AI Workflow connecting nodes, separate from user-controlled buttons. */
+.workflow-rail{display:flex;align-items:center;gap:7px;margin:0 0 25px;max-width:520px}
+.rail-node{width:37px;height:37px;flex:none;display:grid;place-items:center;border:1px solid #51879b;color:#97b8c8;border-radius:50%;font-weight:800;font-size:.74rem;transition:background .3s,border-color .3s,color .3s,box-shadow .3s}
+.rail-node.active,.rail-node.done{background:#143f52;border-color:#82e4ed;color:#ecfeff;box-shadow:0 0 0 3px #71e6ef14}
+.rail-node.active{box-shadow:0 0 0 5px #71e6ef20,0 0 22px #30b7d442}
+.rail-line{flex:1;background:#284555;height:2px;overflow:hidden}
+.rail-line-fill{display:block;width:0;height:100%;background:#89e9f5;transition:width .43s cubic-bezier(.25,.8,.25,1)}
+.workflow-panel .workflow-output,.workflow-panel [data-flow-title],.workflow-panel [data-flow-body]{animation:none}
+.workflow-panel.stage-animating .workflow-output,.workflow-panel.stage-animating [data-flow-title],.workflow-panel.stage-animating [data-flow-body]{animation:kj-stage .38s cubic-bezier(.2,.8,.2,1) both}
+@keyframes kj-stage{from{opacity:0;transform:translate3d(0,9px,0)}to{opacity:1;transform:none}}
+/* Case study first-screen entry; camera movement never distorts screenshots. */
+.motion-ready .case-hero .case-title{animation:kj-hero-in .66s .05s both}
+.motion-ready .case-hero .case-lead{animation:kj-hero-in .66s .16s both}
+.motion-ready .case-hero .case-frame{animation:kj-hero-in .8s .25s both}
+/* Additional restrained project identity effects. */
+.work-visual.orbit::before{content:'';position:absolute;width:240px;height:240px;border:1px solid #86e9f14d;border-radius:50%;box-shadow:0 0 0 26px #65cad916,0 0 0 64px #65cad90c;pointer-events:none;animation:orbit-breath 9s ease-in-out infinite alternate}
+@keyframes orbit-breath{from{opacity:.5;transform:scale(.96)}to{opacity:.9;transform:scale(1.025)}}
+.nero .work-visual{isolation:isolate}
+.contactbox.visible{position:relative}
+.contactbox.visible::after{content:'';position:absolute;inset:0;border:1px solid #87e8f26a;border-radius:inherit;pointer-events:none;opacity:.48;animation:contact-glow 2.2s ease-out 1 both}
+@keyframes contact-glow{from{opacity:.8}to{opacity:0}}
+@media(max-width:700px){
+ .intro-eligible .brand-intro{animation-duration:.87s}
+ .brand-intro__skip{bottom:22px;right:20px}
+ .brand-intro__monogram{font-size:6rem}
+ .motion-ready .hero .hero-visual.visible .ui-window{animation-name:kj-window-mobile}
+ @keyframes kj-window-mobile{from{opacity:0;transform:translate3d(0,13px,0) rotate(.6deg) scale(.985)}to{opacity:1;transform:rotate(.6deg) scale(1)}}
+ .motion-ready .hero .display{animation-duration:.55s}
+ .motion-ready .hero .lede{animation-duration:.55s}
+ .motion-ready .hero .actions{animation-duration:.55s}
+ .workflow-rail{margin-bottom:18px}
+ .rail-node{width:30px;height:30px;font-size:.65rem}
+ .work-card .work-visual .phone{transition:none}
+}
+@media(prefers-reduced-motion:reduce){
+ .intro-eligible .brand-intro{display:none!important}
+ .motion-ready .reveal:not(.visible),.motion-ready .reveal{opacity:1!important;transform:none!important;transition:none!important}
+ .motion-ready .hero *, .motion-ready .case-hero *, .workflow-panel.stage-animating *{animation:none!important}
+ .work-visual.orbit::before,.contactbox.visible::after{animation:none!important}
+ .scroll-progress{will-change:auto}
+}
+
+/* Let the first-visit hero unfold as the curtain lifts; skip on repeat/deep-link visits. */
+.intro-was-shown.motion-ready .hero .hero-signal{animation-delay:1.04s}
+.intro-was-shown.motion-ready .hero .eyebrow{animation-delay:1.12s}
+.intro-was-shown.motion-ready .hero .display{animation-delay:1.2s}
+.intro-was-shown.motion-ready .hero .lede{animation-delay:1.32s}
+.intro-was-shown.motion-ready .hero .actions{animation-delay:1.44s}
+.intro-was-shown.motion-ready .hero .hero-visual.visible .ui-window{animation-delay:1.14s}
+.intro-was-shown.motion-ready .hero .hero-visual.visible .floating-chip.top{animation-delay:1.62s}
+.intro-was-shown.motion-ready .hero .hero-visual.visible .floating-chip.bottom{animation-delay:1.78s}
+@media(max-width:700px){
+ .intro-was-shown.motion-ready .hero .hero-signal{animation-delay:.75s}
+ .intro-was-shown.motion-ready .hero .eyebrow{animation-delay:.82s}
+ .intro-was-shown.motion-ready .hero .display{animation-delay:.87s}
+ .intro-was-shown.motion-ready .hero .lede{animation-delay:.99s}
+ .intro-was-shown.motion-ready .hero .actions{animation-delay:1.1s}
+ .intro-was-shown.motion-ready .hero .hero-visual.visible .ui-window{animation-delay:1.06s}
+}
